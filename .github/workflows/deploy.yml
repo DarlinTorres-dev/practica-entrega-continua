@@ -23,12 +23,11 @@ jobs:
 
       # 3. Build de la imagen
       - name: Build Docker image
-        run: |
-            docker build -t test-image:latest .
+        run: docker build -t darlintorres/mi-app:latest .
 
       # 4. Push a Docker Hub
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
+        run: docker push darlintorres/mi-app:latest
 
       # 5. Deploy en Render
       - name: Deploy to Render
