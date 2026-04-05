@@ -30,6 +30,10 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
 
+      - name: Debug username
+        run: |
+            echo ">>>${{ secrets.DOCKER_USERNAME }}<<<"
+
       # 5. Deploy en Render
       - name: Deploy to Render
         run: |
