@@ -12,11 +12,11 @@ jobs:
     steps:
       # 1. Clonar repo
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 2. Login en Docker Hub
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -25,12 +25,12 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mi-app:latest .
 
-      # 4. Subir imagen a Docker Hub
+      # 4. Push a Docker Hub
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
 
-      # 5. Deploy en Render (YA NO agrega srv-)
+      # 5. Deploy en Render
       - name: Deploy to Render
         run: |
-          curl -X POST https://api.render.com/deploy/${{ secrets.RENDER_SERVICE_ID }} \
+          curl -X POST https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }} \
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
