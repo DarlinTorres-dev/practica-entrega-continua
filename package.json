@@ -1,0 +1,16 @@
+{
+  "name": "practica-entrega-continua",
+  "version": "1.0.0",
+  "description": "App Hola Mundo con Docker",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Darlin",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.22.1"
+  }
+}
